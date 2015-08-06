@@ -39,6 +39,11 @@ public class SpringSystem {
     setLooper(looper)
   }
   
+  public func destroy() {
+    looper = nil
+    removeAllListeners()
+  }
+  
   // MARK: Looper
   
   private var looper: SpringLooper?

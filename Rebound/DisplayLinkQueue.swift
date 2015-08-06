@@ -17,6 +17,12 @@ internal class DisplayLinkQueue {
     displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
   }
   
+  internal func destroy() {
+    requests.removeAll()
+    displayLink.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+    displayLink = nil
+  }
+  
   @objc private func update() {
     while requests.count > 0 {
       let request = requests.removeLast()

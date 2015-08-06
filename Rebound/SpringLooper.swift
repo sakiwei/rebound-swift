@@ -25,6 +25,10 @@ public class AnimationLooper: SpringLooper {
   
   private let queue = DisplayLinkQueue()
   
+  deinit {
+    queue.destroy()
+  }
+  
   public override func run() {
     queue.enqueue {
       dispatch_async(dispatch_get_main_queue()) {
