@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5939F7831B6B5922003C8CF2"
-               BuildableName = "Rebound-iOS.framework"
-               BlueprintName = "Rebound-iOS"
+               BuildableName = "Rebound.framework"
+               BlueprintName = "Rebound"
                ReferencedContainer = "container:Rebound.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5939F7831B6B5922003C8CF2"
-            BuildableName = "Rebound-iOS.framework"
-            BlueprintName = "Rebound-iOS"
+            BuildableName = "Rebound.framework"
+            BlueprintName = "Rebound"
             ReferencedContainer = "container:Rebound.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5939F7831B6B5922003C8CF2"
-            BuildableName = "Rebound-iOS.framework"
-            BlueprintName = "Rebound-iOS"
+            BuildableName = "Rebound.framework"
+            BlueprintName = "Rebound"
             ReferencedContainer = "container:Rebound.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5939F7831B6B5922003C8CF2"
-            BuildableName = "Rebound-iOS.framework"
-            BlueprintName = "Rebound-iOS"
+            BuildableName = "Rebound.framework"
+            BlueprintName = "Rebound"
             ReferencedContainer = "container:Rebound.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
