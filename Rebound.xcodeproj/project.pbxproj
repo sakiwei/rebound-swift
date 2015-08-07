@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5918DA731B6DE73700FCDB20 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918DA721B6DE73700FCDB20 /* Spring.swift */; };
-		591976A71B710B4E003997C4 /* Rebound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound.framework */; };
-		591976AC1B710E20003997C4 /* Rebound.framework in Embedded Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		591976A71B710B4E003997C4 /* Rebound-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound-iOS.framework */; };
+		591976AC1B710E20003997C4 /* Rebound-iOS.framework in Embedded Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound-iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		591976AE1B710E9A003997C4 /* SpringSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591976AD1B710E9A003997C4 /* SpringSystem.swift */; };
 		591C3F8C1B70837700F709CC /* DisplayLinkQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C3F8B1B70837700F709CC /* DisplayLinkQueue.swift */; };
 		5939F7881B6B5922003C8CF2 /* Rebound.h in Headers */ = {isa = PBXBuildFile; fileRef = 5939F7871B6B5922003C8CF2 /* Rebound.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5939F78F1B6B5922003C8CF2 /* Rebound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound.framework */; };
+		5939F78F1B6B5922003C8CF2 /* Rebound-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound-iOS.framework */; };
 		596386FC1B6B594500E2091F /* SpringSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596386FB1B6B594500E2091F /* SpringSystem.swift */; };
 		596386FE1B6C903A00E2091F /* OrigamiValueConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596386FD1B6C903A00E2091F /* OrigamiValueConverter.swift */; };
 		596387001B6C905B00E2091F /* SpringConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596386FF1B6C905B00E2091F /* SpringConfig.swift */; };
@@ -50,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				591976AC1B710E20003997C4 /* Rebound.framework in Embedded Frameworks */,
+				591976AC1B710E20003997C4 /* Rebound-iOS.framework in Embedded Frameworks */,
 			);
 			name = "Embedded Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +72,7 @@
 		5918DA721B6DE73700FCDB20 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 		591976AD1B710E9A003997C4 /* SpringSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringSystem.swift; sourceTree = "<group>"; };
 		591C3F8B1B70837700F709CC /* DisplayLinkQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLinkQueue.swift; sourceTree = "<group>"; };
-		5939F7841B6B5922003C8CF2 /* Rebound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rebound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5939F7841B6B5922003C8CF2 /* Rebound-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Rebound-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5939F7871B6B5922003C8CF2 /* Rebound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rebound.h; sourceTree = "<group>"; };
 		5939F7891B6B5922003C8CF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5939F78E1B6B5922003C8CF2 /* ReboundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReboundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5939F78F1B6B5922003C8CF2 /* Rebound.framework in Frameworks */,
+				5939F78F1B6B5922003C8CF2 /* Rebound-iOS.framework in Frameworks */,
 				596C72EA1B6DDB6100C679CA /* Nimble.framework in Frameworks */,
 				596C72EC1B6DDB6300C679CA /* Quick.framework in Frameworks */,
 			);
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				591976A71B710B4E003997C4 /* Rebound.framework in Frameworks */,
+				591976A71B710B4E003997C4 /* Rebound-iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 		5939F7851B6B5922003C8CF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5939F7841B6B5922003C8CF2 /* Rebound.framework */,
+				5939F7841B6B5922003C8CF2 /* Rebound-iOS.framework */,
 				5939F78E1B6B5922003C8CF2 /* ReboundTests.xctest */,
 				59C709741B6FBC5700727CC1 /* ReboundExample.app */,
 			);
@@ -210,9 +210,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5939F7831B6B5922003C8CF2 /* Rebound */ = {
+		5939F7831B6B5922003C8CF2 /* Rebound-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5939F7981B6B5922003C8CF2 /* Build configuration list for PBXNativeTarget "Rebound" */;
+			buildConfigurationList = 5939F7981B6B5922003C8CF2 /* Build configuration list for PBXNativeTarget "Rebound-iOS" */;
 			buildPhases = (
 				5939F77F1B6B5922003C8CF2 /* Sources */,
 				5939F7801B6B5922003C8CF2 /* Frameworks */,
@@ -223,9 +223,9 @@
 			);
 			dependencies = (
 			);
-			name = Rebound;
+			name = "Rebound-iOS";
 			productName = Rebound;
-			productReference = 5939F7841B6B5922003C8CF2 /* Rebound.framework */;
+			productReference = 5939F7841B6B5922003C8CF2 /* Rebound-iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5939F78D1B6B5922003C8CF2 /* ReboundTests */ = {
@@ -299,7 +299,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5939F7831B6B5922003C8CF2 /* Rebound */,
+				5939F7831B6B5922003C8CF2 /* Rebound-iOS */,
 				5939F78D1B6B5922003C8CF2 /* ReboundTests */,
 				59C709731B6FBC5700727CC1 /* ReboundExample */,
 			);
@@ -373,7 +373,7 @@
 /* Begin PBXTargetDependency section */
 		5939F7911B6B5922003C8CF2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5939F7831B6B5922003C8CF2 /* Rebound */;
+			target = 5939F7831B6B5922003C8CF2 /* Rebound-iOS */;
 			targetProxy = 5939F7901B6B5922003C8CF2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -483,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -502,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -584,7 +586,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5939F7981B6B5922003C8CF2 /* Build configuration list for PBXNativeTarget "Rebound" */ = {
+		5939F7981B6B5922003C8CF2 /* Build configuration list for PBXNativeTarget "Rebound-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5939F7991B6B5922003C8CF2 /* Debug */,
