@@ -23,7 +23,7 @@ public class SpringLooper {
 
 public class AnimationLooper: SpringLooper {
   
-  private let queue = DisplayLinkQueue()
+  let queue = DisplayLinkQueue()
   
   deinit {
     queue.destroy()
