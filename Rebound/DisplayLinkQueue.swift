@@ -14,12 +14,12 @@ internal class DisplayLinkQueue {
   
   internal init() {
     displayLink = CADisplayLink(target: self, selector: "update")
-    displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+    displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
   }
   
   internal func destroy() {
     requests.removeAll()
-    displayLink.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+    displayLink.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
     displayLink = nil
   }
   
