@@ -9,7 +9,7 @@ import Foundation
 
 public struct MathUtil {
   
-  public static func mapValueInRange(value: CGFloat, fromLow: CGFloat, fromHigh: CGFloat, toLow: CGFloat, toHigh: CGFloat) -> CGFloat {
+  public static func mapValueInRange(_ value: CGFloat, fromLow: CGFloat, fromHigh: CGFloat, toLow: CGFloat, toHigh: CGFloat) -> CGFloat {
     let fromRangeSize = fromHigh - fromLow
     let toRangeSize = toHigh - toLow
     let valueScale = (value - fromLow) / fromRangeSize

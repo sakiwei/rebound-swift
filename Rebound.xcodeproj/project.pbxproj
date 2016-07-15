@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591788881D391DEA00F3B55C /* UID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591788871D391DEA00F3B55C /* UID.swift */; };
 		5918DA731B6DE73700FCDB20 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5918DA721B6DE73700FCDB20 /* Spring.swift */; };
 		591976A71B710B4E003997C4 /* Rebound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound.framework */; };
 		591976AC1B710E20003997C4 /* Rebound.framework in Embedded Frameworks */ = {isa = PBXBuildFile; fileRef = 5939F7841B6B5922003C8CF2 /* Rebound.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -21,12 +22,7 @@
 		596387041B6C90A900E2091F /* PhysicsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596387031B6C90A900E2091F /* PhysicsState.swift */; };
 		596387061B6C90DA00E2091F /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596387051B6C90DA00E2091F /* Spring.swift */; };
 		596387081B6C90F600E2091F /* SpringLooper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596387071B6C90F600E2091F /* SpringLooper.swift */; };
-		5963870A1B6D9E2A00E2091F /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596387091B6D9E2A00E2091F /* Bag.swift */; };
 		5967263E1B707E9C00AD11E8 /* MathUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5967263D1B707E9C00AD11E8 /* MathUtil.swift */; };
-		596C72EA1B6DDB6100C679CA /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596C72E91B6DDB6100C679CA /* Nimble.framework */; };
-		596C72EC1B6DDB6300C679CA /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596C72EB1B6DDB6300C679CA /* Quick.framework */; };
-		596C72EF1B6DE05300C679CA /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 596C72EB1B6DDB6300C679CA /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		596C72F01B6DE05300C679CA /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 596C72E91B6DDB6100C679CA /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59C709771B6FBC5700727CC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C709761B6FBC5700727CC1 /* AppDelegate.swift */; };
 		59C709791B6FBC5700727CC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C709781B6FBC5700727CC1 /* ViewController.swift */; };
 		59C7097E1B6FBC5700727CC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C7097D1B6FBC5700727CC1 /* Assets.xcassets */; };
@@ -61,14 +57,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				596C72EF1B6DE05300C679CA /* Quick.framework in CopyFiles */,
-				596C72F01B6DE05300C679CA /* Nimble.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		591788871D391DEA00F3B55C /* UID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UID.swift; sourceTree = "<group>"; };
 		5918DA721B6DE73700FCDB20 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 		591976AD1B710E9A003997C4 /* SpringSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringSystem.swift; sourceTree = "<group>"; };
 		591C3F8B1B70837700F709CC /* DisplayLinkQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLinkQueue.swift; sourceTree = "<group>"; };
@@ -84,7 +79,6 @@
 		596387031B6C90A900E2091F /* PhysicsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsState.swift; sourceTree = "<group>"; };
 		596387051B6C90DA00E2091F /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 		596387071B6C90F600E2091F /* SpringLooper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLooper.swift; sourceTree = "<group>"; };
-		596387091B6D9E2A00E2091F /* Bag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		5967263D1B707E9C00AD11E8 /* MathUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathUtil.swift; sourceTree = "<group>"; };
 		596C72E91B6DDB6100C679CA /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		596C72EB1B6DDB6300C679CA /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -109,8 +103,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5939F78F1B6B5922003C8CF2 /* Rebound.framework in Frameworks */,
-				596C72EA1B6DDB6100C679CA /* Nimble.framework in Frameworks */,
-				596C72EC1B6DDB6300C679CA /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +151,7 @@
 				596387031B6C90A900E2091F /* PhysicsState.swift */,
 				5967263D1B707E9C00AD11E8 /* MathUtil.swift */,
 				591C3F8B1B70837700F709CC /* DisplayLinkQueue.swift */,
-				596387091B6D9E2A00E2091F /* Bag.swift */,
+				591788871D391DEA00F3B55C /* UID.swift */,
 				5939F7891B6B5922003C8CF2 /* Info.plist */,
 			);
 			path = Rebound;
@@ -272,17 +264,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					5939F7831B6B5922003C8CF2 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					5939F78D1B6B5922003C8CF2 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 					59C709731B6FBC5700727CC1 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -340,12 +334,12 @@
 				596387041B6C90A900E2091F /* PhysicsState.swift in Sources */,
 				596387001B6C905B00E2091F /* SpringConfig.swift in Sources */,
 				5967263E1B707E9C00AD11E8 /* MathUtil.swift in Sources */,
+				591788881D391DEA00F3B55C /* UID.swift in Sources */,
 				596387061B6C90DA00E2091F /* Spring.swift in Sources */,
 				591C3F8C1B70837700F709CC /* DisplayLinkQueue.swift in Sources */,
 				596387081B6C90F600E2091F /* SpringLooper.swift in Sources */,
 				596386FC1B6B594500E2091F /* SpringSystem.swift in Sources */,
 				596386FE1B6C903A00E2091F /* OrigamiValueConverter.swift in Sources */,
-				5963870A1B6D9E2A00E2091F /* Bag.swift in Sources */,
 				596387021B6C908300E2091F /* BouncyConversion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +492,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -519,6 +514,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamputinski.Rebound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -549,32 +546,36 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamputinski.ReboundTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		59C709991B6FBC5700727CC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ReboundExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamputinski.ReboundExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		59C7099A1B6FBC5700727CC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ReboundExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamputinski.ReboundExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

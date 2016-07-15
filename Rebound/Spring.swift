@@ -9,23 +9,23 @@ import Foundation
 
 public enum SpringEvent {
   
-  case Activate(Spring)
-  case Update(Spring)
-  case Rest(Spring)
-  case EndStateChange(Spring)
+  case activate(Spring)
+  case update(Spring)
+  case rest(Spring)
+  case endStateChange(Spring)
   
-  public typealias Sink = SpringEvent -> ()
+  public typealias Sink = (SpringEvent) -> ()
   
-  public static func sink(activate activate: ((Spring) -> ())? = nil, update: ((Spring) -> ())? = nil, rest: ((Spring) -> ())? = nil, endStateChange: ((Spring) -> ())? = nil) -> Sink {
+  public static func sink(activate: ((Spring) -> ())? = nil, update: ((Spring) -> ())? = nil, rest: ((Spring) -> ())? = nil, endStateChange: ((Spring) -> ())? = nil) -> Sink {
     return { event in
       switch event {
-      case let .Activate(spring):
+      case let .activate(spring):
         activate?(spring)
-      case let .Update(spring):
+      case let .update(spring):
         update?(spring)
-      case let .Rest(spring):
+      case let .rest(spring):
         rest?(spring)
-      case let .EndStateChange(spring):
+      case let .endStateChange(spring):
         endStateChange?(spring)
       }
     }
@@ -35,15 +35,14 @@ public enum SpringEvent {
 
 public class Spring: Hashable, Equatable {
   
-  private static var UID = 0
   private static let MAX_DELTA_TIME_SEC: Double = 0.064
   private static let SOLVER_TIMESTEP_SEC: Double = 0.001
   
   public var hashValue: Int {
-    get { return id }
+    get { return Int(springId) }
   }
   
-  public let id = Spring.UID++
+  public let springId: Int32 = UID.next()
   
   // MARK: Init
   
@@ -131,17 +130,18 @@ public class Spring: Hashable, Equatable {
   // position taking into account existing velocity. The codepaths for
   // synchronous movement and spring driven animation can
   // be unified using this technique.
-  public func setCurrentValue(currentValue: Double, skipSetAtRest: Bool = false) -> Spring {
+  @discardableResult
+  public func setCurrentValue(_ currentValue: Double, skipSetAtRest: Bool = false) -> Spring {
     startValue = currentValue
     currentState.position = currentValue
     if !skipSetAtRest {
-      setAtRest()
+      _ = setAtRest()
     }
     notifyPositionUpdated(notifyActivate: false, notifyAtRest: false)
     return self
   }
   
-  public func currentValueIsApproximately(value: Double) -> Bool {
+  public func currentValueIsApproximately(_ value: Double) -> Bool {
     return abs(currentValue - value) <= displacementFromRestThreshold
   }
   
@@ -154,7 +154,7 @@ public class Spring: Hashable, Equatable {
     }
   }
   
-  public func getDisplacementDistanceForState(state: PhysicsState) -> Double {
+  public func getDisplacementDistanceForState(_ state: PhysicsState) -> Double {
     return abs(endValue - state.position)
   }
   
@@ -169,7 +169,8 @@ public class Spring: Hashable, Equatable {
   // the Spring to equilibrium. Any listeners that are registered
   // for onSpringEndStateChange will also be notified of this update
   // immediately.
-  public func setEndValue(value: Double) -> Spring {
+  @discardableResult
+  public func setEndValue(_ value: Double) -> Spring {
     if endValue == value && isAtRest {
       return self
     }
@@ -177,7 +178,7 @@ public class Spring: Hashable, Equatable {
     endValue = value
     springSystem.activateSpring(self)
     for listener in listeners {
-      listener(.EndStateChange(self))
+      listener.value(.endStateChange(self))
     }
     return self
   }
@@ -198,7 +199,8 @@ public class Spring: Hashable, Equatable {
   // same velocity as the gesture ended with. The friction, tension,
   // and displacement of the Spring will then govern its motion to
   // return to rest on a natural feeling curve.
-  public func setVelocity(velocity: Double) -> Spring {
+  @discardableResult
+  public func setVelocity(_ velocity: Double) -> Spring {
     if velocity == currentState.velocity {
       return self
     }
@@ -233,6 +235,7 @@ public class Spring: Hashable, Equatable {
   // described in the documentation for setCurrentValue, this method
   // makes it easy to do synchronous non-animated updates to ui
   // elements that are attached to springs via SpringListeners.
+  @discardableResult
   public func setAtRest() -> Spring {
     endValue = currentState.position
     tempState.position = currentState.position
@@ -248,7 +251,7 @@ public class Spring: Hashable, Equatable {
     return !isAtRest || !wasAtRest
   }
   
-  private func interpolate(alpha: Double) {
+  private func interpolate(_ alpha: Double) {
     currentState.position = currentState.position *
       alpha + previousState.position * (1 - alpha)
     currentState.velocity = currentState.velocity *
@@ -259,7 +262,7 @@ public class Spring: Hashable, Equatable {
   
   private var timeAccumulator: Double = 0
   
-  public func advance(time: Double, realDeltaTime: Double) {
+  public func advance(_ time: Double, realDeltaTime: Double) {
     
     var _isAtRest = self.isAtRest
     
@@ -351,7 +354,7 @@ public class Spring: Hashable, Equatable {
         endValue = currentState.position
         startValue = endValue
       }
-      setVelocity(0)
+      _ = setVelocity(0)
       _isAtRest = true
     }
     
@@ -372,33 +375,36 @@ public class Spring: Hashable, Equatable {
   
   // MARK: Notify
   
-  private func notifyPositionUpdated(notifyActivate notifyActivate: Bool, notifyAtRest: Bool) {
+  private func notifyPositionUpdated(notifyActivate: Bool, notifyAtRest: Bool) {
     for listener in listeners {
       if notifyActivate {
-        listener(.Activate(self))
+        listener.value(.activate(self))
       }
-      listener(.Update(self))
+      listener.value(.update(self))
       if notifyAtRest {
-        listener(.Rest(self))
+        listener.value(.rest(self))
       }
     }
   }
   
   // MARK: Listeners
   
-  private var listeners = Bag<SpringEvent.Sink>()
+  private var listeners = Dictionary<Int32,SpringEvent.Sink>()
   
   public func getListenerCount() -> Int {
     return listeners.count
   }
-
-  public func addListener(activate activate: ((Spring) -> ())? = nil, update: ((Spring) -> ())? = nil, rest: ((Spring) -> ())? = nil, endStateChange: ((Spring) -> ())? = nil) -> SpringRemovalToken {
+  
+  @discardableResult
+  public func addListener(activate: ((Spring) -> ())? = nil, update: ((Spring) -> ())? = nil, rest: ((Spring) -> ())? = nil, endStateChange: ((Spring) -> ())? = nil) -> Int32 {
     let sink = SpringEvent.sink(activate: activate, update: update, rest: rest, endStateChange: endStateChange)
-    return listeners.insert(sink)
+    let id = UID.next()
+    listeners[id] = sink
+    return id
   }
   
-  public func removeListener(token: SpringRemovalToken) {
-    listeners.removeValueForToken(token)
+  public func removeListener(_ token: Int32) {
+    listeners.removeValue(forKey: token)
   }
   
   public func removeAllListeners() {

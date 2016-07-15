@@ -31,7 +31,7 @@ public class AnimationLooper: SpringLooper {
   
   public override func run() {
     queue.enqueue {
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         self.springSystem?.loop(CACurrentMediaTime() * 1000.0)
       }
     }
@@ -71,7 +71,7 @@ public class SteppingSimulationLooper: SpringLooper {
   
   private var time: Double = 0
   
-  public func step(timestep: Double) {
+  public func step(_ timestep: Double) {
     time += timestep
     springSystem?.loop(time)
   }

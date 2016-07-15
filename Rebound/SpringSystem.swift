@@ -9,17 +9,17 @@ import Foundation
 
 public enum SpringSystemEvent {
   
-  case BeforeIntegrate(SpringSystem)
-  case AfterIntegrate(SpringSystem)
+  case beforeIntegrate(SpringSystem)
+  case afterIntegrate(SpringSystem)
   
-  public typealias Sink = SpringSystemEvent -> ()
+  public typealias Sink = (SpringSystemEvent) -> ()
   
-  public static func sink(beforeIntegrate beforeIntegrate: ((SpringSystem) -> ())? = nil, afterIntegrate: ((SpringSystem) -> ())? = nil) -> Sink {
+  public static func sink(beforeIntegrate: ((SpringSystem) -> ())? = nil, afterIntegrate: ((SpringSystem) -> ())? = nil) -> Sink {
     return { event in
       switch event {
-      case let .BeforeIntegrate(springSystem):
+      case let .beforeIntegrate(springSystem):
         beforeIntegrate?(springSystem)
-      case let .AfterIntegrate(springSystem):
+      case let .afterIntegrate(springSystem):
         afterIntegrate?(springSystem)
       }
     }
@@ -53,7 +53,7 @@ public class SpringSystem {
   // There are three types of Loopers described below AnimationLooper,
   // SimulationLooper, and SteppingSimulationLooper. AnimationLooper is
   // the default as it is the most useful for common UI animations.
-  public func setLooper(looper: SpringLooper) {
+  public func setLooper(_ looper: SpringLooper) {
     self.looper = looper
     looper.springSystem = self
   }
@@ -70,7 +70,7 @@ public class SpringSystem {
     )
   }
   
-  public func createSpring(tension tension: Double, friction: Double) -> Spring {
+  public func createSpring(tension: Double, friction: Double) -> Spring {
     return createSpring(
       SpringConfig.fromOrigamiTensionAndFriction(tension: tension, friction: friction)
     )
@@ -79,14 +79,14 @@ public class SpringSystem {
   // Add a spring with a specified bounciness and speed. To replicate Origami
   // compositions based on PopAnimation patches, use this factory method to
   // create matching springs.
-  public func createSpring(bounciness bounciness: Double, speed: Double) -> Spring {
+  public func createSpring(bounciness: Double, speed: Double) -> Spring {
     return createSpring(
       SpringConfig.fromBouncinessAndSpeed(bounciness, speed: speed)
     )
   }
   
   // Add a spring with the provided SpringConfig.
-  public func createSpring(config: SpringConfig) -> Spring {
+  public func createSpring(_ config: SpringConfig) -> Spring {
     let spring = Spring(config: config, springSystem: self)
     registerSpring(spring)
     return spring
@@ -107,7 +107,8 @@ public class SpringSystem {
   // a Spring with SpringSystem#createSpring. This method sets the
   // spring up in the registry so that it can be solved in the
   // solver loop.
-  public func registerSpring(spring: Spring) {
+  @discardableResult
+  public func registerSpring(_ spring: Spring) {
     if !springs.contains(spring) {
       springs.append(spring)
     }
@@ -117,22 +118,24 @@ public class SpringSystem {
   // no longer consider this Spring during its integration loop once
   // this is called. This is normally done automatically for you when
   // you call Spring#destroy.
-  public func deregisterSpring(spring: Spring) {
-    if let index = springs.indexOf(spring) {
-      springs.removeAtIndex(index)
+  @discardableResult
+  public func deregisterSpring(_ spring: Spring) {
+    if let index = springs.index(of: spring) {
+      springs.remove(at: index)
     }
-    if let index = activeSprings.indexOf(spring) {
-      activeSprings.removeAtIndex(index)
+    if let index = activeSprings.index(of: spring) {
+      activeSprings.remove(at: index)
     }
-    if let index = idleSprings.indexOf(spring) {
-      idleSprings.removeAtIndex(index)
+    if let index = idleSprings.index(of: spring) {
+      idleSprings.remove(at: index)
     }
   }
   
   // activateSpring is used to notify the SpringSystem that a Spring
   // has become displaced. The system responds by starting its solver
   // loop up if it is currently idle.
-  public func activateSpring(spring: Spring) {
+  @discardableResult
+  public func activateSpring(_ spring: Spring) {
     if !activeSprings.contains(spring) {
       activeSprings.append(spring)
     }
@@ -146,7 +149,7 @@ public class SpringSystem {
   
   private var lastTime: Double = -1.0
   
-  private func advance(time: Double, deltaTime: Double) {
+  private func advance(_ time: Double, deltaTime: Double) {
     idleSprings.removeAll()
     for spring in activeSprings {
       if spring.systemShouldAdvance() {
@@ -157,8 +160,8 @@ public class SpringSystem {
     }
     while idleSprings.count > 0 {
       let spring = idleSprings.removeLast()
-      if let index = activeSprings.indexOf(spring) {
-        activeSprings.removeAtIndex(index)
+      if let index = activeSprings.index(of: spring) {
+        activeSprings.remove(at: index)
       }
     }
   }
@@ -176,14 +179,14 @@ public class SpringSystem {
   // SpringSystem. This gives you an opportunity to run any post
   // integration constraints or adjustments on the Springs in the
   // SpringSystem.
-  public func loop(time: Double) {
+  public func loop(_ time: Double) {
     if lastTime == -1.0 {
       lastTime = time - 1.0
     }
     let ellapsedTime = time - lastTime
     lastTime = time
     for listener in listeners {
-      listener(.BeforeIntegrate(self))
+      listener.value(.beforeIntegrate(self))
     }
     advance(time, deltaTime: ellapsedTime)
     if activeSprings.count == 0 {
@@ -191,14 +194,14 @@ public class SpringSystem {
       lastTime = -1
     }
     for listener in listeners {
-      listener(.AfterIntegrate(self))
+      listener.value(.afterIntegrate(self))
     }
     if !idle {
       looper?.run()
     }
   }
   
-  public func enqueueDisplayLink(request: () -> Void) -> Bool {
+  public func enqueueDisplayLink(_ request: () -> Void) -> Bool {
     if let looper = looper as? AnimationLooper {
       looper.queue.enqueue(request)
       return true
@@ -208,19 +211,22 @@ public class SpringSystem {
   
   // MARK: Listeners
   
-  private var listeners = Bag<SpringSystemEvent.Sink>()
+  private var listeners = Dictionary<Int32,SpringSystemEvent.Sink>()
   
   public func getListenerCount() -> Int {
     return listeners.count
   }
   
-  public func addListener(beforeIntegrate beforeIntegrate: ((SpringSystem) -> ())? = nil, afterIntegrate: ((SpringSystem) -> ())? = nil) -> SpringRemovalToken {
+  @discardableResult
+  public func addListener(beforeIntegrate: ((SpringSystem) -> ())? = nil, afterIntegrate: ((SpringSystem) -> ())? = nil) -> Int32 {
     let sink = SpringSystemEvent.sink(beforeIntegrate: beforeIntegrate, afterIntegrate: afterIntegrate)
-    return listeners.insert(sink)
+    let id = UID.next()
+    listeners[id] = sink
+    return id
   }
   
-  public func removeListener(token: SpringRemovalToken) {
-    listeners.removeValueForToken(token)
+  public func removeListener(_ token: Int32) {
+    listeners.removeValue(forKey: token)
   }
   
   public func removeAllListeners() {

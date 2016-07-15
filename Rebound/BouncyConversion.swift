@@ -27,35 +27,35 @@ public class BouncyConversion {
     self.speed = speed
   }
   
-  static func normalize(value: Double, start: Double, end: Double) -> Double {
+  static func normalize(_ value: Double, start: Double, end: Double) -> Double {
     return (value - start) / (end - start)
   }
   
-  static func projectNormal(n: Double, start: Double, end: Double) -> Double {
+  static func projectNormal(_ n: Double, start: Double, end: Double) -> Double {
     return start + (n * (end - start))
   }
   
-  static func linearInterpolation(t: Double, start: Double, end: Double) -> Double {
+  static func linearInterpolation(_ t: Double, start: Double, end: Double) -> Double {
     return t * end + (1.0 - t) * start
   }
   
-  static func quadraticOutInterpolation(t: Double, start: Double, end: Double) -> Double {
+  static func quadraticOutInterpolation(_ t: Double, start: Double, end: Double) -> Double {
     return linearInterpolation(2 * t - t * t, start: start, end: end)
   }
   
-  static func b3Friction1(x: Double) -> Double {
+  static func b3Friction1(_ x: Double) -> Double {
     return (0.0007 * pow(x, 3)) - (0.031 * pow(x, 2)) + 0.64 * x + 1.28
   }
   
-  static func b3Friction2(x: Double) -> Double {
+  static func b3Friction2(_ x: Double) -> Double {
     return (0.000044 * pow(x, 3)) - (0.006 * pow(x, 2)) + 0.36 * x + 2.0
   }
   
-  static func b3Friction3(x: Double) -> Double {
+  static func b3Friction3(_ x: Double) -> Double {
     return (0.00000045 * pow(x, 3)) - (0.000332 * pow(x, 2)) + 0.1078 * x + 5.84
   }
   
-  static func b3Nobounce(tension: Double) -> Double {
+  static func b3Nobounce(_ tension: Double) -> Double {
     if tension <= 18 {
       return b3Friction1(tension)
     } else if tension > 18 && tension <= 44 {

@@ -13,13 +13,13 @@ internal class DisplayLinkQueue {
   private var requests: Array<() -> Void> = []
   
   internal init() {
-    displayLink = CADisplayLink(target: self, selector: "update")
-    displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+    displayLink = CADisplayLink(target: self, selector: #selector(DisplayLinkQueue.update))
+    displayLink.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
   }
   
   internal func destroy() {
     requests.removeAll()
-    displayLink.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+    displayLink.remove(from: RunLoop.main, forMode: RunLoopMode.commonModes)
     displayLink = nil
   }
   
@@ -28,12 +28,12 @@ internal class DisplayLinkQueue {
       let request = requests.removeLast()
       request()
     }
-    displayLink.paused = true
+    displayLink.isPaused = true
   }
   
-  internal func enqueue(request: () -> Void) {
-    requests.insert(request, atIndex: 0)
-    displayLink.paused = false
+  internal func enqueue(_ request: () -> Void) {
+    requests.insert(request, at: 0)
+    displayLink.isPaused = false
   }
   
 }
