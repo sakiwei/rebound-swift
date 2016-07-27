@@ -201,14 +201,6 @@ public class SpringSystem {
     }
   }
   
-  public func enqueueDisplayLink(_ request: () -> Void) -> Bool {
-    if let looper = looper as? AnimationLooper {
-      looper.queue.enqueue(request)
-      return true
-    }
-    return false
-  }
-  
   // MARK: Listeners
   
   private var listeners = Dictionary<Int32,SpringSystemEvent.Sink>()

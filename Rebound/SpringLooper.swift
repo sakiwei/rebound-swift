@@ -30,10 +30,9 @@ public class AnimationLooper: SpringLooper {
   }
   
   public override func run() {
-    queue.enqueue {
-      DispatchQueue.main.async {
-        self.springSystem?.loop(CACurrentMediaTime() * 1000.0)
-      }
+    queue.updateBlock = { [weak self] in
+      self?.queue.updateBlock = nil
+      self?.springSystem?.loop(CACurrentMediaTime() * 1000.0)
     }
   }
   

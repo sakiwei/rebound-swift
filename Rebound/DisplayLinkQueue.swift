@@ -10,7 +10,7 @@ import Foundation
 internal class DisplayLinkQueue {
   
   private var displayLink: CADisplayLink!
-  private var requests: Array<() -> Void> = []
+  internal var updateBlock: (() -> Void)?
   
   internal init() {
     displayLink = CADisplayLink(target: self, selector: #selector(DisplayLinkQueue.update))
@@ -18,22 +18,12 @@ internal class DisplayLinkQueue {
   }
   
   internal func destroy() {
-    requests.removeAll()
     displayLink.remove(from: RunLoop.main, forMode: RunLoopMode.commonModes)
     displayLink = nil
   }
   
   @objc private func update() {
-    while requests.count > 0 {
-      let request = requests.removeLast()
-      request()
-    }
-    displayLink.isPaused = true
-  }
-  
-  internal func enqueue(_ request: () -> Void) {
-    requests.insert(request, at: 0)
-    displayLink.isPaused = false
+    updateBlock?()
   }
   
 }
