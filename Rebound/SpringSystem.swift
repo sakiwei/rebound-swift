@@ -42,6 +42,9 @@ public class SpringSystem {
   public func destroy() {
     looper = nil
     removeAllListeners()
+    while springs.count > 0 {
+      springs.removeFirst().destroy()
+    }
   }
   
   // MARK: Looper
