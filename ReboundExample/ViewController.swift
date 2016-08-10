@@ -107,7 +107,7 @@ class ViewController: UIViewController {
   
   func decorateLabel(_ label: UILabel) {
     label.font = UIFont(name: "HelveticaNeue", size: 14.0)
-    label.textColor = UIColor.darkGray()
+    label.textColor = UIColor.darkGray
   }
   
   func addSubViews(_ views: [UIView]) {
