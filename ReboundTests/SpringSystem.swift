@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Rebound
+@testable import Rebound
 
 class SpringSystemSpec: XCTestCase {
   

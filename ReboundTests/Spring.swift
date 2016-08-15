@@ -5,8 +5,8 @@
 //  Created by Adam Putinski on 8/1/15.
 //
 
-import Rebound
 import XCTest
+@testable import Rebound
 
 class SpringSpec: XCTestCase {
   
