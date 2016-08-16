@@ -80,8 +80,6 @@
 		596387051B6C90DA00E2091F /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 		596387071B6C90F600E2091F /* SpringLooper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLooper.swift; sourceTree = "<group>"; };
 		5967263D1B707E9C00AD11E8 /* MathUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathUtil.swift; sourceTree = "<group>"; };
-		596C72E91B6DDB6100C679CA /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		596C72EB1B6DDB6300C679CA /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		59C709741B6FBC5700727CC1 /* ReboundExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReboundExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C709761B6FBC5700727CC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59C709781B6FBC5700727CC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,10 +118,9 @@
 		5939F77A1B6B5922003C8CF2 = {
 			isa = PBXGroup;
 			children = (
-				596C72ED1B6DDB6800C679CA /* Frameworks */,
-				59C709751B6FBC5700727CC1 /* ReboundExample */,
 				5939F7861B6B5922003C8CF2 /* Rebound */,
 				5939F7921B6B5922003C8CF2 /* ReboundTests */,
+				59C709751B6FBC5700727CC1 /* ReboundExample */,
 				5939F7851B6B5922003C8CF2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -165,16 +162,7 @@
 				5939F7951B6B5922003C8CF2 /* Info.plist */,
 			);
 			path = ReboundTests;
-			sourceTree = "<group>";
-		};
-		596C72ED1B6DDB6800C679CA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				596C72EB1B6DDB6300C679CA /* Quick.framework */,
-				596C72E91B6DDB6100C679CA /* Nimble.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		59C709751B6FBC5700727CC1 /* ReboundExample */ = {
 			isa = PBXGroup;
