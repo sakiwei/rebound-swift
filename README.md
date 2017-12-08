@@ -38,11 +38,11 @@ class ViewController: UIViewController {
     view.addSubview(square)
   }
   
-  func squareDown() {
+  @objc func squareDown() {
     spring.setEndValue(1.0)
   }
   
-  func squareUp() {
+  @objc func squareUp() {
     spring.setEndValue(0)
   }
   
