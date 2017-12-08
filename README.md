@@ -3,7 +3,7 @@
 [![Version][version-image]][version-url]
 [![Carthage compatible][carthage-image]][carthage-url]
 
-Swift 2.0 port of https://github.com/facebook/rebound-js
+Swift port of https://github.com/facebook/rebound-js
 
 ## Usage
 
