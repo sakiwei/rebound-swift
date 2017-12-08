@@ -110,7 +110,6 @@ public class SpringSystem {
   // a Spring with SpringSystem#createSpring. This method sets the
   // spring up in the registry so that it can be solved in the
   // solver loop.
-  @discardableResult
   public func registerSpring(_ spring: Spring) {
     if !springs.contains(spring) {
       springs.append(spring)
@@ -121,7 +120,6 @@ public class SpringSystem {
   // no longer consider this Spring during its integration loop once
   // this is called. This is normally done automatically for you when
   // you call Spring#destroy.
-  @discardableResult
   public func deregisterSpring(_ spring: Spring) {
     if let index = springs.index(of: spring) {
       springs.remove(at: index)
@@ -137,7 +135,6 @@ public class SpringSystem {
   // activateSpring is used to notify the SpringSystem that a Spring
   // has become displaced. The system responds by starting its solver
   // loop up if it is currently idle.
-  @discardableResult
   public func activateSpring(_ spring: Spring) {
     if !activeSprings.contains(spring) {
       activeSprings.append(spring)

@@ -117,7 +117,7 @@ class ViewController: UIViewController {
     }
   }
   
-  func updateSpringConfig() {
+  @objc func updateSpringConfig() {
     tensionValue.text = "\(Int(tensionSlider.value))"
     frictionValue.text = "\(Int(frictionSlider.value))"
     spring.config = SpringConfig.fromOrigamiTensionAndFriction(
@@ -126,11 +126,11 @@ class ViewController: UIViewController {
     )
   }
   
-  func squareDown() {
+  @objc func squareDown() {
     spring.setEndValue(1.0)
   }
   
-  func squareUp() {
+  @objc func squareUp() {
     spring.setEndValue(0)
   }
 
