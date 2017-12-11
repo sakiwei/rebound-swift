@@ -32,9 +32,9 @@ class ViewController: UIViewController {
     
     square.backgroundColor = UIColor(red: 0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     square.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-    square.addTarget(self, action: #selector(squareDown), forControlEvents: .TouchDown)
-    square.addTarget(self, action: #selector(squareUp), forControlEvents: .TouchUpInside)
-    square.addTarget(self, action: #selector(squareUp), forControlEvents: .TouchUpOutside)
+    square.addTarget(self, action: #selector(squareDown), forControlEvents: .touchDown)
+    square.addTarget(self, action: #selector(squareUp), forControlEvents: .touchUpInside)
+    square.addTarget(self, action: #selector(squareUp), forControlEvents: .touchUpOutside)
     view.addSubview(square)
   }
   
