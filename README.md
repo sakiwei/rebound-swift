@@ -23,11 +23,11 @@ class ViewController: UIViewController {
     
     springSystem = SpringSystem()
     spring = springSystem.createSpring(tension: 40.0, friction: 3.0)
-    spring.addListener(update: { spring in
+    spring.addListener(update: { [weak self] spring in
       let scale = MathUtil.mapValueInRange(
         CGFloat(spring.currentValue), fromLow: 0, fromHigh: 1.0, toLow: 1.0, toHigh: 0.5
       )
-      self.square.transform = CGAffineTransform(scaleX: scale, y: scale)
+      self?.square.transform = CGAffineTransform(scaleX: scale, y: scale)
     })
     
     square.backgroundColor = UIColor(red: 0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
