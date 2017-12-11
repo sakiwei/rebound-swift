@@ -27,7 +27,7 @@ class ViewController: UIViewController {
       let scale = MathUtil.mapValueInRange(
         CGFloat(spring.currentValue), fromLow: 0, fromHigh: 1.0, toLow: 1.0, toHigh: 0.5
       )
-      self.square.transform = CGAffineTransformMakeScale(scale, scale)
+      self.square.transform = CGAffineTransform(scaleX: scale, y: scale)
     })
     
     square.backgroundColor = UIColor(red: 0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
