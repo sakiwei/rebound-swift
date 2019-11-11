@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import UIKit
 
 internal class DisplayLinkQueue {
   
@@ -14,11 +16,11 @@ internal class DisplayLinkQueue {
   
   internal init() {
     displayLink = CADisplayLink(target: self, selector: #selector(DisplayLinkQueue.update))
-    displayLink.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
+    displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
   }
   
   internal func destroy() {
-    displayLink.remove(from: RunLoop.main, forMode: RunLoopMode.commonModes)
+    displayLink.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
     displayLink = nil
   }
   

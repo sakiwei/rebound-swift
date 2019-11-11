@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 struct UID {
  
   private static var UID: Int32 = 0

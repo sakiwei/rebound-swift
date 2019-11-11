@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Rebound
+import ReboundSwift
 
 class ViewController: UIViewController {
   
